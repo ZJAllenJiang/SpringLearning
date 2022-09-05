@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.allen.repository.mapper.dbo.CustomersMapper">
+  <resultMap id="BaseResultMap" type="org.allen.api.dbo.Customers">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="CustomerId" jdbcType="INTEGER" property="customerid" />
+    <result column="Name" jdbcType="NVARCHAR" property="name" />
+    <result column="Location" jdbcType="NVARCHAR" property="location" />
+    <result column="Email" jdbcType="NVARCHAR" property="email" />
+  </resultMap>
+</mapper>
