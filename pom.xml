@@ -6,6 +6,7 @@
     <modules>
         <module>springcache</module>
         <module>springmybatis</module>
+        <module>springhibernate</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
