@@ -26,3 +26,59 @@ Hibernate对象/关系映射能力强，数据库无关性好，对于关系模�
 ## Hibernate
 ### Spring Data Jpa
 
+## Spring Application
+### Prepare
+```java
+public SpringApplication(ResourceLoader resourceLoader, Class<?>... primarySources) {
+    this.resourceLoader = resourceLoader;
+    Assert.notNull(primarySources, "PrimarySources must not be null");
+    this.primarySources = new LinkedHashSet<>(Arrays.asList(primarySources));
+    this.webApplicationType = WebApplicationType.deduceFromClasspath();
+    this.bootstrapRegistryInitializers = new ArrayList<>(
+    getSpringFactoriesInstances(BootstrapRegistryInitializer.class));
+    setInitializers((Collection) getSpringFactoriesInstances(ApplicationContextInitializer.class));
+    setListeners((Collection) getSpringFactoriesInstances(ApplicationListener.class));
+    this.mainApplicationClass = deduceMainApplicationClass();
+}
+```
+### Runtime
+```java
+public ConfigurableApplicationContext run(String... args) {
+    long startTime = System.nanoTime();
+    DefaultBootstrapContext bootstrapContext = createBootstrapContext();
+    ConfigurableApplicationContext context = null;
+    configureHeadlessProperty();
+    SpringApplicationRunListeners listeners = getRunListeners(args);
+    listeners.starting(bootstrapContext, this.mainApplicationClass);
+    try {
+        ApplicationArguments applicationArguments = new DefaultApplicationArguments(args);
+        ConfigurableEnvironment environment = prepareEnvironment(listeners, bootstrapContext, applicationArguments);
+        configureIgnoreBeanInfo(environment);
+        Banner printedBanner = printBanner(environment);
+        context = createApplicationContext();
+        context.setApplicationStartup(this.applicationStartup);
+        prepareContext(bootstrapContext, context, environment, listeners, applicationArguments, printedBanner);
+        refreshContext(context);
+        afterRefresh(context, applicationArguments);
+        Duration timeTakenToStartup = Duration.ofNanos(System.nanoTime() - startTime);
+        if (this.logStartupInfo) {
+            new StartupInfoLogger(this.mainApplicationClass).logStarted(getApplicationLog(), timeTakenToStartup);
+        }
+        listeners.started(context, timeTakenToStartup);
+        callRunners(context, applicationArguments);
+    }
+    catch (Throwable ex) {
+        handleRunFailure(context, ex, listeners);
+        throw new IllegalStateException(ex);
+    }
+    try {
+        Duration timeTakenToReady = Duration.ofNanos(System.nanoTime() - startTime);
+        listeners.ready(context, timeTakenToReady);
+    }
+    catch (Throwable ex) {
+        handleRunFailure(context, ex, null);
+        throw new IllegalStateException(ex);
+    }
+    return context;
+}
+```
