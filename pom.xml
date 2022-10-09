@@ -9,6 +9,7 @@
         <module>springhibernate</module>
         <module>springmongo</module>
         <module>springkafka</module>
+        <module>springbatch</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
