@@ -10,6 +10,8 @@
         <module>springmongo</module>
         <module>springkafka</module>
         <module>springbatch</module>
+        <module>eureka-server</module>
+        <module>eureka-client</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
