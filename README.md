@@ -187,3 +187,19 @@ spring.kafka.streams.ssl.trust-store-type= # Type of the trust store.
 spring.kafka.streams.state-dir= # Directory location for the state store.
 spring.kafka.template.default-topic= # Default topic to which messages are sent.
 ```
+
+## Spring Cloud Eureka
+### More Configuration
+| 配置                                                       | 含义                                                                                                      | 默认值                          |
+|----------------------------------------------------------|---------------------------------------------------------------------------------------------------------|------------------------------|
+| eureka.client.register-with-eureka                       | 表示是否将自己注册到Eureka Server                                                                                 | true                         |
+| eureka.client.fetch-registry                             | 表示是否从Eureka Server获取注册的服务信息                                                                             | true                         |
+| eureka.client.serviceUrl.defaultZone                     | 配置Eureka Server地址，用于注册服务和获取服务                                                                           | http://localhost:8761/eureka |
+| eureka.client.registry-fetch-interval-seconds            | 默认值为30秒，即每30秒去Eureka Server上获取服务并缓存                                                                     | 30                           |
+| eureka.instance.lease-renewal-interval-in-seconds        | 向Eureka Server发送心跳的间隔时间，单位为秒，用于服务续约                                                                     | 30                           |
+| eureka.instance.lease-expiration-duration-in-seconds     | 定义服务失效时间，即Eureka Server检测到Eureka Client木有心跳后（客户端意外下线）多少秒将其剔除                                            | 90                           |
+| eureka.server.enable-self-preservation                   | 用于开启Eureka Server自我保护功能                                                                                 | true                         |
+| eureka.client.instance-info-replication-interval-seconds | 更新实例信息的变化到Eureka服务端的间隔时间，单位为秒                                                                           | 30                           |
+| eureka.client.eureka-service-url-poll-interval-seconds   | 轮询Eureka服务端地址更改的间隔时间，单位为秒。                                                                              | 300                          |
+| eureka.instance.prefer-ip-address                        | 表示使用IP进行配置为不是域名                                                                                         | false                        |
+| eureka.client.healthcheck.enabled                        | 默认Erueka Server是通过心跳来检测Eureka Client的健康状况的，通过置为true改变Eeureka Server对客户端健康检测的方式，改用Actuator的/health端点来检测。 | false                        |
