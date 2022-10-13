@@ -12,6 +12,7 @@
         <module>springbatch</module>
         <module>eureka-server</module>
         <module>eureka-client</module>
+        <module>cloud-feign</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
